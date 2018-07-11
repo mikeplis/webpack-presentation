@@ -6,9 +6,7 @@ const code = `
 </head>
 
 <body>
-    <script src="round.js"></script>
     <script src="add.js"></script>
-    <script src="multiply.js"></script>
     <script src="main.js"></script>
 </body>
 

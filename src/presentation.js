@@ -13,7 +13,8 @@ import {
     Appear,
     Layout,
     Fill,
-    Fit
+    Fit,
+    S
 } from 'spectacle';
 import CodeSlide from 'spectacle-code-slide';
 import basic from './examples/basic';
@@ -44,31 +45,24 @@ export default class Presentation extends React.Component {
     render() {
         return (
             <Deck transition={['zoom', 'slide']} transitionDuration={500} theme={theme}>
-                <Slide transition={['zoom']} bgColor="primary">
-                    <Heading size={1} fit caps lineHeight={1} textColor="secondary">
-                        Mike Plis
-                    </Heading>
-                    <Text margin="10px 0 0" textColor="tertiary" size={1} fit bold>
-                        Software Engineer - Oyster
-                    </Text>
+                <Slide transition={['zoom']} bgColor="tertiary">
+                    <Appear>
+                        <Heading size={1} fit caps lineHeight={1} textColor="primary">
+                            Webpack
+                        </Heading>
+                    </Appear>
                 </Slide>
-                <Slide transition={['zoom']} bgColor="primary">
-                    <Heading size={1} fit caps lineHeight={1} textColor="secondary">
-                        Webpack
-                    </Heading>
+                <Slide bgColor="secondary">
+                    <BlockQuote>
+                        <Quote style={{ fontSize: '2.5rem', lineHeight: 1.4 }}>
+                            At its core, webpack is a static module bundler for modern JavaScript
+                            applications. When webpack processes your application, it internally
+                            builds a dependency graph which maps every module your project needs and
+                            generates one or more bundles.
+                        </Quote>
+                        <Cite>Webpack Docs</Cite>
+                    </BlockQuote>
                 </Slide>
-                <CodeSlide
-                    bgColor="secondary"
-                    code={basic}
-                    lang="js"
-                    ranges={[
-                        { loc: [0, 100] },
-                        { loc: [0, 3] },
-                        { loc: [4, 7] },
-                        { loc: [8, 11] },
-                        { loc: [12, 18] }
-                    ]}
-                />
                 <Slide bgColor="black">
                     <Layout>
                         <Fill>
@@ -90,6 +84,7 @@ export default class Presentation extends React.Component {
                     </Layout>
                 </Slide>
                 <Slide bgColor="black">
+                    {/* TODO: maybe split into separate code panes to emphasize different files */}
                     <Layout>
                         <Fill>
                             <CodePane
@@ -117,6 +112,39 @@ export default class Presentation extends React.Component {
                         theme="external"
                     />
                 </Slide>
+                <Slide bgColor="tertiary">
+                    <Heading fit caps textColor="primary">
+                        Core Concepts - Entry
+                    </Heading>
+                </Slide>
+                <Slide bgColor="primary" textColor="tertiary">
+                    <Heading size={5} textColor="secondary" caps>
+                        Specifying an entry point tells Webpack which module...
+                    </Heading>
+                    <List>
+                        <ListItem>...to begin with when building dependency graph</ListItem>
+                        <ListItem>...to execute when bundle is loaded in browser</ListItem>
+                    </List>
+                </Slide>
+
+                <Slide bgColor="tertiary">
+                    <Heading fit caps textColor="primary">
+                        Core Concepts - Output
+                    </Heading>
+                </Slide>
+
+                <Slide bgColor="tertiary">
+                    <Heading fit caps textColor="primary">
+                        Core Concepts - Loaders
+                    </Heading>
+                </Slide>
+
+                <Slide bgColor="tertiary">
+                    <Heading fit caps textColor="primary">
+                        Core Concepts - Plugins
+                    </Heading>
+                </Slide>
+
                 <Slide transition={['fade']} bgColor="tertiary">
                     <Heading size={6} textColor="primary" caps>
                         Typography
