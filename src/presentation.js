@@ -2,6 +2,7 @@ import React from 'react';
 import {
     BlockQuote,
     Cite,
+    CodePane,
     Deck,
     Heading,
     ListItem,
@@ -15,11 +16,16 @@ import {
     Fit
 } from 'spectacle';
 import CodeSlide from 'spectacle-code-slide';
-import bundle from './examples/bundle';
+import basic from './examples/basic';
+import basicHtml from './examples/basic-html';
+import basicSplit from './examples/basic-split';
+import basicSplitHtml from './examples/basic-split-html';
+import modules from './examples/modules';
 
 import createTheme from 'spectacle/lib/themes/default';
 
 require('normalize.css');
+require('./main.css');
 
 const theme = createTheme(
     {
@@ -40,22 +46,77 @@ export default class Presentation extends React.Component {
             <Deck transition={['zoom', 'slide']} transitionDuration={500} theme={theme}>
                 <Slide transition={['zoom']} bgColor="primary">
                     <Heading size={1} fit caps lineHeight={1} textColor="secondary">
-                        Spectacle Boilerplate
+                        Mike Plis
                     </Heading>
                     <Text margin="10px 0 0" textColor="tertiary" size={1} fit bold>
-                        open the presentation/index.js file to get started
+                        Software Engineer - Oyster
                     </Text>
+                </Slide>
+                <Slide transition={['zoom']} bgColor="primary">
+                    <Heading size={1} fit caps lineHeight={1} textColor="secondary">
+                        Webpack
+                    </Heading>
                 </Slide>
                 <CodeSlide
                     bgColor="secondary"
-                    code={bundle}
+                    code={basic}
                     lang="js"
                     ranges={[
-                        { loc: [0, 100], title: 'Test' },
-                        { loc: [3, 4], note: 'Another Title' },
-                        { loc: [31, 44], note: 'multiply.js' }
+                        { loc: [0, 100] },
+                        { loc: [0, 3] },
+                        { loc: [4, 7] },
+                        { loc: [8, 11] },
+                        { loc: [12, 18] }
                     ]}
                 />
+                <Slide bgColor="black">
+                    <Layout>
+                        <Fill>
+                            <CodePane
+                                style={{ fontSize: '1.1rem' }}
+                                lang="js"
+                                source={basic}
+                                theme="external"
+                            />
+                        </Fill>
+                        <Fill>
+                            <CodePane
+                                style={{ fontSize: '1.1rem' }}
+                                lang="html"
+                                source={basicHtml}
+                                theme="external"
+                            />
+                        </Fill>
+                    </Layout>
+                </Slide>
+                <Slide bgColor="black">
+                    <Layout>
+                        <Fill>
+                            <CodePane
+                                style={{ fontSize: '1rem' }}
+                                lang="js"
+                                source={basicSplit}
+                                theme="external"
+                            />
+                        </Fill>
+                        <Fill>
+                            <CodePane
+                                style={{ fontSize: '1rem' }}
+                                lang="html"
+                                source={basicSplitHtml}
+                                theme="external"
+                            />
+                        </Fill>
+                    </Layout>
+                </Slide>
+                <Slide bgColor="black">
+                    <CodePane
+                        style={{ fontSize: '0.9rem' }}
+                        lang="js"
+                        source={modules}
+                        theme="external"
+                    />
+                </Slide>
                 <Slide transition={['fade']} bgColor="tertiary">
                     <Heading size={6} textColor="primary" caps>
                         Typography
