@@ -1,14 +1,9 @@
 const code = `
+<!-- index.html -->
 <html>
-
-<head>
-    <title>My Awesome App</title>
-</head>
-
 <body>
     <script src="main.js"></script>
 </body>
-
 </html>
 `;
 

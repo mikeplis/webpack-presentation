@@ -14,7 +14,8 @@ import {
     Layout,
     Fill,
     Fit,
-    S
+    S,
+    Notes
 } from 'spectacle';
 import CodeSlide from 'spectacle-code-slide';
 import basic from './examples/basic';
@@ -22,6 +23,8 @@ import basicHtml from './examples/basic-html';
 import basicSplit from './examples/basic-split';
 import basicSplitHtml from './examples/basic-split-html';
 import modules from './examples/modules';
+import addSplit from './examples/add-split';
+import mainSplit from './examples/main-split';
 
 import createTheme from 'spectacle/lib/themes/default';
 
@@ -46,6 +49,12 @@ export default class Presentation extends React.Component {
         return (
             <Deck transition={['zoom', 'slide']} transitionDuration={500} theme={theme}>
                 <Slide transition={['zoom']} bgColor="tertiary">
+                    <Notes>
+                        <div>
+                            Webpack is an important part of the frontend web development toolchain,
+                            but it can sometimes be misunderstood.
+                        </div>
+                    </Notes>
                     <Appear>
                         <Heading size={1} fit caps lineHeight={1} textColor="primary">
                             Webpack
@@ -54,55 +63,65 @@ export default class Presentation extends React.Component {
                 </Slide>
                 <Slide bgColor="secondary">
                     <BlockQuote>
+                        <Notes>
+                            <div>The three terms I want you to keep in mind are:</div>
+                            <ul>
+                                <li>Modules</li>
+                                <li>Dependency Graph</li>
+                                <li>Bundle</li>
+                            </ul>
+                        </Notes>
                         <Quote style={{ fontSize: '2.5rem', lineHeight: 1.4 }}>
-                            At its core, webpack is a static module bundler for modern JavaScript
-                            applications. When webpack processes your application, it internally
-                            builds a dependency graph which maps every module your project needs and
-                            generates one or more bundles.
+                            At its core, webpack is a static{' '}
+                            <S type="bold" textColor="tertiary">
+                                module
+                            </S>{' '}
+                            bundler for modern JavaScript applications. When webpack processes your
+                            application, it internally builds a{' '}
+                            <S type="bold" textColor="tertiary">
+                                dependency graph
+                            </S>{' '}
+                            which maps every module your project needs and generates one or more{' '}
+                            <S type="bold" textColor="tertiary">
+                                bundles
+                            </S>.
                         </Quote>
                         <Cite>Webpack Docs</Cite>
                     </BlockQuote>
                 </Slide>
                 <Slide bgColor="black">
-                    <Layout>
-                        <Fill>
-                            <CodePane
-                                style={{ fontSize: '1.1rem' }}
-                                lang="js"
-                                source={basic}
-                                theme="external"
-                            />
-                        </Fill>
-                        <Fill>
-                            <CodePane
-                                style={{ fontSize: '1.1rem' }}
-                                lang="html"
-                                source={basicHtml}
-                                theme="external"
-                            />
-                        </Fill>
-                    </Layout>
+                    <CodePane
+                        style={{ fontSize: '1.7rem' }}
+                        lang="js"
+                        source={basic}
+                        theme="external"
+                    />
+                    <CodePane
+                        style={{ fontSize: '1.7rem' }}
+                        lang="html"
+                        source={basicHtml}
+                        theme="external"
+                    />
                 </Slide>
                 <Slide bgColor="black">
-                    {/* TODO: maybe split into separate code panes to emphasize different files */}
-                    <Layout>
-                        <Fill>
-                            <CodePane
-                                style={{ fontSize: '1rem' }}
-                                lang="js"
-                                source={basicSplit}
-                                theme="external"
-                            />
-                        </Fill>
-                        <Fill>
-                            <CodePane
-                                style={{ fontSize: '1rem' }}
-                                lang="html"
-                                source={basicSplitHtml}
-                                theme="external"
-                            />
-                        </Fill>
-                    </Layout>
+                    <CodePane
+                        style={{ fontSize: '1.3rem' }}
+                        lang="js"
+                        source={addSplit}
+                        theme="external"
+                    />
+                    <CodePane
+                        style={{ fontSize: '1.3rem' }}
+                        lang="js"
+                        source={mainSplit}
+                        theme="external"
+                    />
+                    <CodePane
+                        style={{ fontSize: '1.3rem' }}
+                        lang="html"
+                        source={basicSplitHtml}
+                        theme="external"
+                    />
                 </Slide>
                 <Slide bgColor="black">
                     <CodePane
